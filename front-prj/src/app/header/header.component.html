@@ -1,15 +1,18 @@
 <div class="container input-header container-top">
   <form novalidate [formGroup]="formHeaderSearch" (keydown)="updateHeaderSearch($event)">
-      <div class="form-group">
-          <input class="form-control" id="iptSearch" type="text" placeholder="Digite o nome do filme e pressione ENTER"
-          formControlName="iptSearch" [ngClass]="{ 'is-invalid': submitted && formHeaderSearch.controls['iptSearch'].invalid &&
-          (formHeaderSearch.controls['iptSearch'].dirty || formHeaderSearch.controls['iptSearch'].touched) }" />
-           <div *ngIf="formHeaderSearch.controls['iptSearch'].invalid && (formHeaderSearch.controls['iptSearch'].dirty ||
+    <div class="form-group">
+      <input class="form-control" id="iptSearch" type="text" placeholder="Digite o nome do filme e pressione ENTER"
+        formControlName="iptSearch" [ngClass]="{ 'is-invalid': submitted && formHeaderSearch.controls['iptSearch'].invalid &&
+          (formHeaderSearch.controls['iptSearch'].dirty || formHeaderSearch.controls['iptSearch'].touched) }" maxlength="45"/>
+      <div *ngIf="formHeaderSearch.controls['iptSearch'].invalid && (formHeaderSearch.controls['iptSearch'].dirty ||
             formHeaderSearch.controls['iptSearch'].touched)" class="alert alert-danger">
-              <div *ngIf="formHeaderSearch.controls['iptSearch'].errors.required">
-               O termo para pesquisa é obrigatório!
-              </div>
-          </div>
+        <div *ngIf="formHeaderSearch.controls['iptSearch'].errors.required">
+          O termo para pesquisa é obrigatório!
+        </div>
+        <div *ngIf="formHeaderSearch.controls['iptSearch'].errors.minlength">
+          Digite pelo menos 5 caracteres!
+        </div>
       </div>
+    </div>
   </form>
 </div>

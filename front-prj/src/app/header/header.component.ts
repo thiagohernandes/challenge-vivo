@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formHeaderSearch = this.formBuilder.group({
-      iptSearch: ['', Validators.required, Validators.minLength(5), Validators.maxLength(80) ]
+      iptSearch: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)] ]
    });
   }
 
@@ -24,12 +24,11 @@ export class HeaderComponent implements OnInit {
 
   updateHeaderSearch(event): void {
     this.submitted = true;
-
     if (this.formHeaderSearch.invalid) {
       return;
     }
     if (event.keyCode === 13) {
-      this.headerIptSearchEmitter.emit('d');
+      this.headerIptSearchEmitter.emit(this.formHeaderSearch.controls['iptSearch'].value);
       this.submitted = false;
     }
   }

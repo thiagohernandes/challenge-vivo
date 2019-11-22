@@ -2,9 +2,39 @@
     margin-top: 2%;
 }
 
+.container-flex-horizontal {
+    flex-direction: row;
+}
+
 .input-header input[type="text"] {
     font-size: 24px;
-    width: 460px;
+    width: 480px;
     border-top-style: hidden;
     border-right-style: hidden;
+    background-color: black;
+    color: white;
+}
+
+.alert-danger {
+    width: 440px;
+}
+
+.background-color-dark {
+    background-color: black;
+}
+
+.max-width-item {
+    max-width: 178px;
+}
+
+.font-color-white {
+    color: white;
+}
+
+.item-component {
+    height: 300px;
+}
+
+.item-component-no-poster {
+    height: 60px;
 }
