@@ -1,46 +1,22 @@
 <app-header (headerIptSearchEmitter)="searchMovieSerie($event)"> </app-header>
 <div class="container">
-    <div *ngIf="search"> 
-        <h2 class="font-color-white align-self-center" >Nenhum resultado para ´{{search}}´</h2>
+    <div *ngIf="search && itens.length === 0"> 
+        <h2 class="font-color-white" >Nenhum resultado para ´{{search}}´</h2>
     </div>
-
+    <div *ngIf="errorReport"> 
+            <h2 class="font-color-white" >Nenhum resultado para ´{{search}}´</h2>
+        </div>
+    <div *ngIf="itens.length > 0"> 
+        <h2 class="font-color-white" >{{itens.length}} resultado(s)  para ´{{search}}´ </h2>
+    </div>
     <div class="row">
-
-        <div *ngFor="let item of itens">
-        <div class="row">
-            <div  class="col-sm-4">
-        <div style="color: greenyellow;">col-sm-1</div>
-        <div style="color: greenyellow;">col-sm-2</div>
-    </div>
-        </div>
-        </div>
-
-    </div>
-    <!-- <div style="display: flex;">
-        <div *ngFor="let item of itens" class="row">
-            <div *ngIf="item.Poster === 'N/A' else tplImg" >
-                <div class="item-component-no-poster">
-                    <div class="col-2 align-self-center">
-                        <h5 class="font-color-white" >{{item.Poster}}</h5>
-                    </div>
-                    <div class="col-3 align-self-center">
-                        <h5 class="font-color-white">{{item.Title}}</h5>
-                    </div>
-                </div>            
+        <div *ngFor="let item of itens" class="col-md-4 col-sm-6 col-12">
+            <div style="display: flex; flex-direction: row; ">
+                <img [ngClass]="{'item-component-no-poster': item.Poster === 'N/A',
+                'item-component': item.Poster !== 'N/A'}" src="{{handlerImage(item)}}" />
+                <h5 [ngClass]="{'item-component-no-poster': item.Poster === 'N/A',
+                'item-component': item.Poster !== 'N/A'}">{{item.Title}}</h5>
             </div>
-            <ng-template #tplImg>
-                <div class="item-component col-md-5">
-                    <div class="col-2 align-self-center">
-                        <img class="max-width-item" src="{{item.Poster}}">
-                    </div>
-                    <div class="col-3 align-self-center">
-                        <h5 class="font-color-white">{{item.Title}}</h5>
-                    </div>
-                </div>
-            </ng-template>
         </div>
-    </div> -->
-
-
-
+    </div>
 </div>

@@ -32,9 +32,14 @@
 }
 
 .item-component {
-    height: 300px;
+    min-width: 177px;
+    margin-left: 15px; 
+    max-width: 178px;
+    align-self: center;
+    color: white;
 }
 
 .item-component-no-poster {
-    height: 60px;
+    align-self: center;
+    color: white;
 }
