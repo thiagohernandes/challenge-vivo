@@ -10,13 +10,18 @@ import { HttpClientModule  } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HomeService } from './home/home.service';
 import { HeaderComponent } from './header/header.component';
+import { ItemSearchComponent } from './item-search/item-search.component';
+import { ItemSelectedComponent } from './item-selected/item-selected.component';
+import { HelperService } from './shared/helper.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ItemSearchComponent,
+    ItemSelectedComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,8 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule
   ],
   providers: [
-    HomeService
+    HomeService,
+    HelperService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

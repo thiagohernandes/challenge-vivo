@@ -43,3 +43,22 @@
     align-self: center;
     color: white;
 }
+
+.item-component-selected {
+    min-width: 340px;
+    margin-left: 15px; 
+    max-width: 178px;
+    align-self: center;
+    color: white !important;
+}
+
+.item-component-no-poster-selected {
+    align-self: center;
+    color: white;
+}
+
+.itens-loop {
+    display: flex; 
+    flex-direction: row;
+    margin-top: 20px;
+}

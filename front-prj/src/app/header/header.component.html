@@ -1,7 +1,7 @@
-<div class="container input-header container-top">
+<div class="container input-header container-top" (keydown)="util.globalNavigateSettings($event)">
   <form novalidate [formGroup]="formHeaderSearch" (keydown)="updateHeaderSearch($event)">
     <div class="form-group">
-      <input class="form-control" id="iptSearch" type="text" placeholder="Digite o nome do filme e pressione ENTER"
+      <input autofocus autocomplete="off" class="form-control" id="iptSearch" type="text" placeholder="Digite o nome do filme e pressione ENTER"
         formControlName="iptSearch" [ngClass]="{ 'is-invalid': submitted && formHeaderSearch.controls['iptSearch'].invalid &&
           (formHeaderSearch.controls['iptSearch'].dirty || formHeaderSearch.controls['iptSearch'].touched) }" maxlength="45"/>
       <div *ngIf="formHeaderSearch.controls['iptSearch'].invalid && (formHeaderSearch.controls['iptSearch'].dirty ||

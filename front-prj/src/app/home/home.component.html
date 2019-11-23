@@ -1,5 +1,5 @@
-<app-header (headerIptSearchEmitter)="searchMovieSerie($event)"> </app-header>
-<div class="container">
+<app-header [searchHome]="search" (headerIptSearchEmitter)="searchMovieSerie($event)"> </app-header>
+<div class="container" (keydown)="util.globalNavigateSettings($event)">
     <div *ngIf="search && itens.length === 0"> 
         <h2 class="font-color-white" >Nenhum resultado para ´{{search}}´</h2>
     </div>
@@ -11,12 +11,7 @@
     </div>
     <div class="row">
         <div *ngFor="let item of itens" class="col-md-4 col-sm-6 col-12">
-            <div style="display: flex; flex-direction: row; ">
-                <img [ngClass]="{'item-component-no-poster': item.Poster === 'N/A',
-                'item-component': item.Poster !== 'N/A'}" src="{{handlerImage(item)}}" />
-                <h5 [ngClass]="{'item-component-no-poster': item.Poster === 'N/A',
-                'item-component': item.Poster !== 'N/A'}">{{item.Title}}</h5>
-            </div>
+            <app-item-search [itemSearched]="item"></app-item-search>
         </div>
     </div>
 </div>

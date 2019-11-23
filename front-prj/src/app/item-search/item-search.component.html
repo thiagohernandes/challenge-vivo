@@ -1,0 +1,8 @@
+<span [routerLink]="['/item-selected', itemSearched.imdbID !== undefined ? itemSearched.imdbID : '']" style="cursor: pointer;">
+    <div class="itens-loop">
+        <img [ngClass]="{'item-component-no-poster': itemSearched.Poster === 'N/A',
+        'item-component': itemSearched.Poster !== 'N/A'}" src="{{helper.handlerImage(itemSearched)}}" />
+        <h5 [ngClass]="{'item-component-no-poster': itemSearched.Poster === 'N/A',
+        'item-component': itemSearched.Poster !== 'N/A'}">{{itemSearched.Title}}</h5>
+    </div>
+</span>

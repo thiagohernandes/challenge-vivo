@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HomeService } from './home.service';
-import { Response, Item } from './response';
+import { Response } from './response';
 import { UtilApp } from '../shared/util';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +12,26 @@ import { UtilApp } from '../shared/util';
 export class HomeComponent implements OnInit {
 
   itens: Response[] = [];
-  private util = new UtilApp();
+  public util = new UtilApp();
   public errorReport: any = null;
   public search: string;
 
-  constructor(private homeService: HomeService) { }
+  @Output()
+  searchEmitter = new EventEmitter();
+
+  constructor(private activateRoute: ActivatedRoute, private homeService: HomeService) { }
 
   ngOnInit() {
+    this.activateRoute.paramMap.subscribe(params => {
+      if (!params.get('newsearch')) {
+        this.homeService.lastItensSearched = null;
+        this.search = '';
+        return;
+      }
+      this.itens = [];
+      this.itens = this.homeService.lastItensSearched;
+      this.search = params.get('newsearch');
+    });
   }
 
   searchMovieSerie(search: string): void {
@@ -26,6 +40,8 @@ export class HomeComponent implements OnInit {
         this.search = search;
         this.errorReport = null;
         if (data.Error) {
+          this.homeService.lastItensSearched = [];
+          this.homeService.searchedItem = '';
           return;
         }
         if (!data.Search) {
@@ -33,13 +49,11 @@ export class HomeComponent implements OnInit {
         } else {
           this.itens = data.Search;
         }
+        this.homeService.lastItensSearched = [];
+        this.homeService.lastItensSearched = this.itens;
+        this.homeService.searchedItem = search;
       }, err => {
           this.errorReport = err;
       });
   }
-
-  handlerImage(item: Item) {
-    return item.Poster === 'N/A' ? 'assets\\img\\not-found-poster.png' : item.Poster;
-  }
-
 }

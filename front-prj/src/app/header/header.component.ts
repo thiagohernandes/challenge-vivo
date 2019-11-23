@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UtilApp } from '../shared/util';
+import { HomeService } from '../home/home.service';
 
 @Component({
   selector: 'app-header',
@@ -8,18 +10,27 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input()
+  searchHome: string;
+
   @Output()
   headerIptSearchEmitter = new EventEmitter();
   submitted = false;
   formHeaderSearch: FormGroup;
+  public util = new UtilApp();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private homeService: HomeService) {
     this.formHeaderSearch = this.formBuilder.group({
       iptSearch: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)] ]
    });
   }
 
   ngOnInit() {
+    if (this.homeService.lastItensSearched) {
+      this.formHeaderSearch.get('iptSearch').setValue(this.homeService.searchedItem);
+    } else {
+      this.formHeaderSearch.get('iptSearch').setValue('');
+    }
   }
 
   updateHeaderSearch(event): void {
@@ -28,7 +39,7 @@ export class HeaderComponent implements OnInit {
       return;
     }
     if (event.keyCode === 13) {
-      this.headerIptSearchEmitter.emit(this.formHeaderSearch.controls['iptSearch'].value);
+      this.headerIptSearchEmitter.emit(this.formHeaderSearch.get('iptSearch').value);
       this.submitted = false;
     }
   }
