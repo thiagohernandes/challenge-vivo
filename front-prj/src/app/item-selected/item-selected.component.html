@@ -4,24 +4,36 @@
             <img [ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
             'item-component-selected': itemSelected.Poster !== 'N/A'}" src="{{helper.handlerImage(itemSelected)}}" />
         </div>
-        <div class="col-8">
-            <label style="margin-bottom: 20px; font-size: 30px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
-            'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Title}} ({{itemSelected.Year}})</label>
-            <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
-            'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Runtime}} - {{itemSelected.Genre}}</label>
-            <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
-            'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Plot}}</label>
-            <label class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
-            'item-component-selected': itemSelected.Poster !== 'N/A'}">Atores: {{itemSelected.Actors}}</label>
-            <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
-            'item-component-selected': itemSelected.Poster !== 'N/A'}">Diretor: {{itemSelected.Director}}</label>
-            <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
-            'item-component-selected': itemSelected.Poster !== 'N/A'}">Idioma Original: {{itemSelected.Language}}</label>
+        <div class="col-7">
+            <div>
+                <label style="margin-bottom: 20px; font-size: 30px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
+                'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Title}} ({{itemSelected.Year}})</label>
+            </div>
+            <div>
+                <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
+                'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Runtime}} - {{itemSelected.Genre}}</label>
+            </div>
+            <div>
+                <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
+                'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Plot}}</label>
+            </div>
+            <div>
+                <label class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
+                'item-component-selected': itemSelected.Poster !== 'N/A'}">Atores: {{itemSelected.Actors}}</label>
+            </div>
+            <div>
+                <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
+                'item-component-selected': itemSelected.Poster !== 'N/A'}">Diretor: {{itemSelected.Director}}</label>
+            </div>
+            <div>
+                <label style="margin-bottom: 20px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
+                'item-component-selected': itemSelected.Poster !== 'N/A'}">Idioma Original: {{itemSelected.Language}}</label>
+            </div>
             <div class="row">
-                    <div class="col-1" style="margin-right: 24px; margin-top: 150px;">
+                    <div class="col-1" style="margin-right: 24px; margin-top: 70px;">
                         <button type="button" class="btn btn-primary" (click)="comeBackHome()" >Voltar</button>
                     </div>
-                    <div class="col-4" style="margin-top: 150px;">
+                    <div class="col-4" style="margin-top: 70px;">
                         <button type="button" class="btn btn-secondary" [routerLink]="['/home']">Nova Busca</button>
                     </div>
             </div>
