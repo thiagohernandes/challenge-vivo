@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UtilApp } from '../shared/util';
 import { HomeService } from '../home/home.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class HeaderComponent implements OnInit {
   headerIptSearchEmitter = new EventEmitter();
   submitted = false;
   formHeaderSearch: FormGroup;
-  public util = new UtilApp();
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) {
     this.formHeaderSearch = this.formBuilder.group({

@@ -32,9 +32,8 @@
 }
 
 .item-component {
-    min-width: 177px;
     margin-left: 15px; 
-    max-width: 178px;
+    max-width: 150px;
     align-self: center;
     color: white;
 }
@@ -61,4 +60,8 @@
     display: flex; 
     flex-direction: row;
     margin-top: 20px;
+}
+
+.itens-loop:hover {
+    border: 3px solid white;
 }

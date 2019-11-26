@@ -1,17 +1,20 @@
 <app-header [searchHome]="search" (headerIptSearchEmitter)="searchMovieSerie($event)"> </app-header>
-<div class="container" (keydown)="util.globalNavigateSettings($event)">
+<div class="container">
     <div *ngIf="search && itens.length === 0"> 
         <h2 class="font-color-white" >Nenhum resultado para ´{{search}}´</h2>
     </div>
+    <div *ngIf="loading" style="text-align: center;"> 
+        <img src="assets\img\loading-gif.gif" width="150px" >
+    </div>
     <div *ngIf="errorReport"> 
-            <h2 class="font-color-white" >Nenhum resultado para ´{{search}}´</h2>
-        </div>
+        <h2 class="font-color-white" >Nenhum resultado para ´{{search}}´</h2>
+    </div>
     <div *ngIf="itens.length > 0"> 
         <h2 class="font-color-white" >{{itens.length}} resultado(s)  para ´{{search}}´ </h2>
     </div>
     <div class="row">
-        <div *ngFor="let item of itens" class="col-md-4 col-sm-6 col-12">
-            <app-item-search [itemSearched]="item"></app-item-search>
+        <div tabindex="0" *ngFor="let item of itens; let i = index" class="col-md-3 col-sm-8 col-12">
+            <app-item-search tabindex="{{i}}" [itemSearched]="item"></app-item-search>
         </div>
     </div>
 </div>

@@ -1,10 +1,9 @@
-<div class="container">
-    <div class="row" style="margin-top: 50px">
+<div class="row" style="margin-top: 50px">
         <div class="col-4">
             <img [ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
             'item-component-selected': itemSelected.Poster !== 'N/A'}" src="{{helper.handlerImage(itemSelected)}}" />
         </div>
-        <div class="col-7">
+        <div class="col-sm">
             <div>
                 <label style="margin-bottom: 20px; font-size: 30px;" class="font-color-white"[ngClass]="{'item-component-no-poster-selected': itemSelected.Poster === 'N/A',
                 'item-component-selected': itemSelected.Poster !== 'N/A'}">{{itemSelected.Title}} ({{itemSelected.Year}})</label>
@@ -30,13 +29,12 @@
                 'item-component-selected': itemSelected.Poster !== 'N/A'}">Idioma Original: {{itemSelected.Language}}</label>
             </div>
             <div class="row">
-                    <div class="col-1" style="margin-right: 24px; margin-top: 70px;">
+                    <div class="col-2" style="margin-top: 70px;">
                         <button type="button" class="btn btn-primary" (click)="comeBackHome()" >Voltar</button>
                     </div>
-                    <div class="col-4" style="margin-top: 70px;">
+                    <div class="col-3" style="margin-top: 70px;">
                         <button type="button" class="btn btn-secondary" [routerLink]="['/home']">Nova Busca</button>
                     </div>
             </div>
         </div>
     </div>
-</div>
